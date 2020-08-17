@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather</title>
+    <style type="text/css">
+        #main{
+            margin:0;
+            box-sizing: border-box;
+            text-align: center;
+            padding-top: 50px;
+        }
+        input[type='text']{
+            width: 20%;
+            padding: 10px;
+            border: 2px solid black;
+            margin-bottom: 5px;
+        }
+        input[type='submit']{
+            width: 10%;
+            padding: 10px;
+            border: 2px solid black;
+            background:smog white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header style="background-color: #00d1b2;padding: 2rem 1rem 2rem">
+        <h1 align="center">What's the weather like?</h1>
+    </header>
+    <section>
+    <div id='main'>
+    <form method="post">
+      {% csrf_token %}
+        <input type="text" name="city" placeholder="City Name"><br> 
+        <input type="submit" value="Submit">
+        </form>
+        <figure>
+        <table cellspacing="5px" cellpadding="10px" align="center">
+            <tr>
+                <td>1</td><th>City</th><td>{{city_weather.city}}</td>
+            </tr>
+            <tr>
+                <td>2</td><th>Temprature</th><td>{{city_weather.temprature}} ºC</td>
+            </tr>
+            <tr>
+                <td>3</td><th>Description</th><td>{{city_weather.description}}</td>
+            </tr>
+            <tr>
+                <td>4</td><th>Humidity</th><td>{{city_weather.humidity}}</td>
+            </tr>
+            <tr>
+                <td>5</td><th>Pressure</th><td>{{city_weather.pressure}} hPa</td>
+            </tr>
+            <tr>
+                <td>6</td><th>Wind</th><td>{{city_weather.wind}} meter/sec</td>
+            </tr>
+            <tr>
+                <td>7</td><th>Icon</td><th><img src="https://openweathermap.org/img/w/{{city_weather.icon}}.png"></td>
+            </tr>
+           <tr>
+                <td>8</td><th>Current Time</th><td>{{city_weather.dt}}</td>
+            </tr>
+
+            
+            
+            
+        </table>
+        </figure>
+    </section>
+    <footer style="background-color: #00d1b2;padding:1.5rem 6rem">
+    <p align="right">@ShubhamBhawsar</p>
+    </footer>
+</body>
+
+</html>
